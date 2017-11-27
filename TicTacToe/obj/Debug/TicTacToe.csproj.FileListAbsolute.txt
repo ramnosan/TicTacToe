@@ -37,3 +37,17 @@ C:\Users\Leon\Documents\Visual Studio 2012\Projects\TicTacToe\TicTacToe\obj\Debu
 C:\Users\Leon\Documents\Visual Studio 2012\Projects\TicTacToe\TicTacToe\obj\Debug\TicTacToe.g.resources
 C:\Users\Leon\Documents\Visual Studio 2012\Projects\TicTacToe\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.resources
 C:\Users\Leon\Documents\Visual Studio 2012\Projects\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.Cache
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\bin\Debug\TicTacToe.exe.config
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\bin\Debug\TicTacToe.exe
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\bin\Debug\TicTacToe.pdb
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csprojResolveAssemblyReference.cache
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\MainWindow.baml
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\MainWindow.g.cs
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\App.g.cs
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe_MarkupCompile.cache
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.g.resources
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.resources
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.Cache
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.exe
+C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.pdb
