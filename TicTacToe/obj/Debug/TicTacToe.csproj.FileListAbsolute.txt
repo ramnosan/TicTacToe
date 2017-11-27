@@ -51,3 +51,6 @@ C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.Ge
 C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
 C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.exe
 C:\Users\LPTP\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.pdb
+C:\Users\Leon\Documents\GitHub\TicTacToe\TicTacToe\bin\Debug\TicTacToe.exe.config
+C:\Users\Leon\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.exe
+C:\Users\Leon\Documents\GitHub\TicTacToe\TicTacToe\obj\Debug\TicTacToe.pdb
