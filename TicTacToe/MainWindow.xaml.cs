@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Web;
 using System.IO;
-namespace TicTacToe
+namespace TicTacToe//BITTE man
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
