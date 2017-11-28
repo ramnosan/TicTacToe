@@ -24,8 +24,6 @@ namespace TicTacToe
         char x = 'x';
         char o = 'o';
 
-        //Player p1;
-        //Player p2;
         Player ai;
         Player ai2;
 
