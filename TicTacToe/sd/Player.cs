@@ -65,6 +65,7 @@ namespace TicTacToe
             else
             {
                 generateRandomComputerMove(buttonList);
+                MessageBox.Show("performAction wrongly used");
             }
             return true;
         }
@@ -99,12 +100,12 @@ namespace TicTacToe
             return (int)Char.GetNumericValue(numberOfButtonClicked[3])-1;
         }
 
-        public void generateSmartComputerMove()
+        public void generateSmartComputerMove()//NOTTO
         {
             boardForComp.nameToBeChanged();
         }
 
-        
+        //_______________________________________________________________________
         public NeuralNetwork nn = new NeuralNetwork(25.5, new int[] { 9, 4, 9});
         public List<memPart> memory = new List<memPart>();
         public double[] runNN(List<double> input)
@@ -112,55 +113,22 @@ namespace TicTacToe
             return nn.Run(input);
         }
 
-        public void trainNN()
+        public void trainNN()//TODO
         {
             List<double> inputList = new List<double>();
             List<double> outputList = new List<double>();
-            for (int i = 0; i < memory.Count; i++)
-            {
-                inputList.Clear();
-                outputList.Clear();
-                double[] input = new double[9];
-                for (int m = 0; m < memory[i].boardInfo.Count; m++)
-                {
-                    input[m] = memory[i].boardInfo[m];
-                }
-                for (int outp = 0; outp < 9; outp++)
-                {
-                    for (int act = 0; act < 9; act++)
-                    {
-                        if (act == memory[i].action)
-                        {
-                            outputList.Add(memory[i].action);
-                        }
-                        else outputList.Add(0);
-                    }
-                }
-
-                nn.Train(inputList, outputList);
-            }
-            
+            nn.Train(inputList, outputList);
         }
 
         public void makeDecision(Board board, List<Button> buttonList)
         {
             List<double> boardInfoH = getBoardTOInputForNN(board);
             double[] output = nn.Run(boardInfoH);
-            memPart memP = new memPart();
-            memP.action = OutputToAction(output);
-            memP.boardInfo = boardInfoH;
-            memory.Add(memP);
-            performAction(memP.action, buttonList);
         }
 
         public int RandMove(Board board, List<Button> buttonList)
         {
-            memPart memP = new memPart();
-            memP.action = generateRandomComputerMove(buttonList);
-            memP.boardInfo = getBoardTOInputForNN(board);
-            memory.Add(memP);
-            
-            return memP.action;
+            return 0;
         }
 
         public List<double> getBoardTOInputForNN(Board board)
@@ -187,9 +155,11 @@ namespace TicTacToe
             }
             return input;
         }
-        private int OutputToAction(double[] output)
+
+        Random rand = new Random();
+        private int OutputToAction(double[] output)//gets the actions withe the highest value
         {
-            double highestValue = output[0];
+            double highestValue = output[rand.Next(0,9)];
             int indexOfHV = 0;
             for (int i = 1; i < output.Length; i++)
             {

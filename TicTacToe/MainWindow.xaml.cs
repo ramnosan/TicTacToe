@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Web;
 using System.IO;
-namespace TicTacToe//BITTE man
+namespace TicTacToe
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -39,13 +39,8 @@ namespace TicTacToe//BITTE man
 
             board = new Board();
 
-            //Test vvvvv
             ai = new Player(false, 'o');
-            //ai.makeDecision(board, buttonList);
-            //Test ^^^^^
             ai2 = new Player(false, 'x');
-            //p1 = new Player(false, x);
-           // p2 = new Player(false, o);
 
             buttonList.Add(btn1);
             buttonList.Add(btn2);
@@ -84,11 +79,6 @@ namespace TicTacToe//BITTE man
             }
             else if(rand == 0)
             {
-                /*board.MarksTurn = p2.Marker;
-                if (!p2.IsHuman)
-                {
-                    p2.generateRandomComputerMove(board, buttonList);
-                }*/
                 board.MarksTurn = ai.Marker;
                 if (ai2.IsHuman == true)
                 {
@@ -163,8 +153,6 @@ namespace TicTacToe//BITTE man
                 labelWinner.Content = board.MarksTurn + " won the game!";
                 if(ai.Marker == board.MarksTurn)
                 {
-                    //ai.transverReward(100, board);
-                    //ai2.transverReward(-100, board);
                     ai.Wins = ai.Wins+1;
                     for (int i = 0; i < ai.memory.Count; i++)
                     {
@@ -174,8 +162,6 @@ namespace TicTacToe//BITTE man
                 }
                 else if(ai2.Marker == board.MarksTurn)
                 {
-                    //ai.transverReward(-1000, board);
-                    //ai2.transverReward(100, board);
                     for (int i = 0; i < ai2.memory.Count; i++)
                     {
                         ai2.trainNN();
@@ -190,8 +176,6 @@ namespace TicTacToe//BITTE man
             {
                 labelWinner.Content = "It's a tie!";
                 
-                //ai.transverReward(5, board);
-                //ai2.transverReward(5, board);
                 restart(); counter++;
                 ai.memory.Clear();
             }
@@ -202,15 +186,8 @@ namespace TicTacToe//BITTE man
 
                 if (ai2.IsHuman == false && ai2.Marker == board.MarksTurn)
                 {
-                    //ai2.BoardForComp = board;
-
                     ai2.generateRandomComputerMove(buttonList);
                 }
-                /*else if (p2.IsHuman == false && p2.Marker == board.MarksTurn)
-                {
-                    //p2.BoardForComp = board;
-                    p2.generateRandomComputerMove(board, buttonList);
-                }*/
                 else if(ai.Marker == board.MarksTurn)///TODO____________________________________________________________________________!!!
                 {
                     if (ai2.IsHuman == true)
@@ -221,6 +198,7 @@ namespace TicTacToe//BITTE man
                         ai.RandMove(board, buttonList);
                 }
             }
+
             labelRandOrNot.Content = "ai2: " + ai2.Wins.ToString() + "\nai: " + ai.Wins.ToString();
         }
 
@@ -233,7 +211,6 @@ namespace TicTacToe//BITTE man
                 button.Content = "";
             }
             board = new Board();
-            //ai.Time = 0;
             startGame();
         }
 
@@ -245,8 +222,6 @@ namespace TicTacToe//BITTE man
                 button.Content = "";
             }
             board = new Board();
-            //ai.Time = 0;
-            //ai2.Time = 0;
             startGame();
         }
 
