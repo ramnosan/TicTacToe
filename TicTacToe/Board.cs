@@ -46,6 +46,8 @@ namespace TicTacToe
         {
             this.gameBoard[row, column] = marker;
         }
+
+        int anzahlAufrufeVonSubmitMove = 0;
         public void submitMove(int action, char marker)
         {
             int count = 0;
@@ -60,6 +62,7 @@ namespace TicTacToe
                     count++;
                 }
             }
+            ++anzahlAufrufeVonSubmitMove;
         }
 
         public void changeMarksTurn()
@@ -187,7 +190,6 @@ namespace TicTacToe
         public void nameToBeChanged()
         {
             char marktAtRowColumn = gameBoard[row, column];
-         
         }
     }
 }

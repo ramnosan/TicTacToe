@@ -64,8 +64,10 @@ namespace TicTacToe
             }
             else
             {
+                
                 generateRandomComputerMove(buttonList);
-                MessageBox.Show("performAction wrongly used");
+                //MessageBox.Show("performAction wrongly used");
+                return false; //extra
             }
             return true;
         }
@@ -95,7 +97,6 @@ namespace TicTacToe
             invokeProv.Invoke();
 
             buttonListAfterRemove = new List<Button>();
-            //MessageBox.Show("random");
             
             return (int)Char.GetNumericValue(numberOfButtonClicked[3])-1;
         }
@@ -113,22 +114,52 @@ namespace TicTacToe
             return nn.Run(input);
         }
 
-        public void trainNN()//TODO
+        public void trainNN(List <double> inputList, List<double> outputList)
         {
-            List<double> inputList = new List<double>();
-            List<double> outputList = new List<double>();
+            inputList = new List<double>();
+            outputList = new List<double>();
             nn.Train(inputList, outputList);
         }
 
-        public void makeDecision(Board board, List<Button> buttonList)
+        public void trainNNViaRLMethod()//Trains the NN with a random Memory
+        {
+            
+        }
+
+        public int indexOfMemoryPartAtWork = -1;
+        public bool makeDecision(Board board, List<Button> buttonList)//EXTRA saves memories
         {
             List<double> boardInfoH = getBoardTOInputForNN(board);
             double[] output = nn.Run(boardInfoH);
-        }
 
-        public int RandMove(Board board, List<Button> buttonList)
-        {
-            return 0;
+            boardForComp.GameBoard = board.GameBoard;
+            int action = OutputToAction(output);
+
+            memPart m = new memPart();
+            m.action = action;
+            m.state = getBoardTOInputForNN(board);
+            boardForComp.submitMove(action, marker); m.nextState = getBoardTOInputForNN(board);
+            m.nextState = getBoardTOInputForNN(boardForComp);
+            if (boardForComp.isWin())
+            {
+                m.reward = 1;
+            }
+            else if (boardForComp.isCat())
+            {
+                m.reward = 0.5;
+            }
+            else if (false)//TODO if lose
+            {
+
+            }
+            else
+            {
+                m.reward = -0.01;
+            }
+
+            indexOfMemoryPartAtWork++;
+
+            return performAction(action, buttonList);//return false if the action is random//and presses and button on the ui
         }
 
         public List<double> getBoardTOInputForNN(Board board)
@@ -157,7 +188,7 @@ namespace TicTacToe
         }
 
         Random rand = new Random();
-        private int OutputToAction(double[] output)//gets the actions withe the highest value
+        private int OutputToAction(double[] output)//gets the actions withe the highest value that is available
         {
             double highestValue = output[rand.Next(0,9)];
             int indexOfHV = 0;
@@ -174,9 +205,9 @@ namespace TicTacToe
     }
 
     public struct memPart{
-        public List<double> boardInfo;
+        public List<double> state;
         public int action;
+        public double reward;
+        public List<double> nextState;
     }
-
-    
 }

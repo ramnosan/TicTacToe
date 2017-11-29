@@ -10,5 +10,4 @@
             this.Weight = n.RandomValue;
         }
     }
-
 }

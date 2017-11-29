@@ -56,7 +56,6 @@ namespace TicTacToe
         int counter = 0;
         public void startGame()
         {
-            //board = new Board();  
             if(labelAi2IsHuman.IsChecked == true)
             {
                 ai2.IsHuman = true;
@@ -78,12 +77,7 @@ namespace TicTacToe
             else if(rand == 0)
             {
                 board.MarksTurn = ai.Marker;
-                if (ai2.IsHuman == true)
-                {
-                    ai.makeDecision(board, buttonList);
-                }
-                else
-                ai.RandMove(board, buttonList);
+                ai.makeDecision(board, buttonList);
             }
                         
             btnRestart.Content = rand.ToString();
@@ -137,12 +131,9 @@ namespace TicTacToe
             {
                 row = 2; column = 2;
             }
-            if(counter == 20000)
-            {
-                ai2.IsHuman = true;
-            }
 
             board.submitMove(row, column, board.MarksTurn);
+            
             button.IsEnabled = false;
             button.Content = board.MarksTurn;
             
@@ -152,48 +143,43 @@ namespace TicTacToe
                 if(ai.Marker == board.MarksTurn)
                 {
                     ai.Wins = ai.Wins+1;
-                    for (int i = 0; i < ai.memory.Count; i++)
-                    {
-                        ai.trainNN();
-                    }
-                    ai.memory.Clear();
                 }
                 else if(ai2.Marker == board.MarksTurn)
                 {
-                    for (int i = 0; i < ai2.memory.Count; i++)
-                    {
-                        ai2.trainNN();
-                    }
-                    ai2.memory.Clear();
                     ai2.Wins = ai2.Wins + 1;
-                    
                 }
-                restart(); counter++; ai.memory.Clear();
+                restart(); counter++;
             }
             else if (board.isCat())
             {
                 labelWinner.Content = "It's a tie!";
-                
                 restart(); counter++;
-                ai.memory.Clear();
             }
             else
             {
                 board.changeMarksTurn();
-                labelWinner.Content = board.MarksTurn;
+                labelWinner.Content = board.MarksTurn;//Change Player who can submit a move
 
-                if (ai2.IsHuman == false && ai2.Marker == board.MarksTurn)
+                if (ai2.Marker == board.MarksTurn)
                 {
-                    ai2.generateRandomComputerMove(buttonList);
+                    if (ai2.IsHuman == false)
+                    {
+                        /*if (ai.makeDecision(board, buttonList))
+                        {
+                            lblRandActionWasUsed.Content = "true";
+                        }*///Für den Anfang disabled
+                        ai2.generateRandomComputerMove(buttonList);
+                    }
                 }
                 else if(ai.Marker == board.MarksTurn)///TODO____________________________________________________________________________!!!
                 {
-                    if (ai2.IsHuman == true)
+                    if (ai.IsHuman == false)
                     {
-                        ai.makeDecision(board, buttonList);
+                       if (ai.makeDecision(board, buttonList))
+                        {
+                            lblRandActionWasUsed.Content = true;
+                        }
                     }
-                    else
-                        ai.RandMove(board, buttonList);
                 }
             }
 
