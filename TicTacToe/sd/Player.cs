@@ -121,9 +121,17 @@ namespace TicTacToe
             nn.Train(inputList, outputList);
         }
 
+        double discountFaktor =0.7;
         public void trainNNViaRLMethod()//Trains the NN with a random Memory
         {
-            
+            if(memory.Count > 0){
+            int ra = rand.Next(0, memory.Count-1);
+            double[] output1 = runNN(memory[ra].state);
+            int bestAction1 = OutputToAction(output1);
+            int bestAction2 = OutputToAction(runNN(memory[ra].nextState));
+            double targetValueForActionA = memory[ra].reward +
+                discountFaktor * bestAction2;
+            }
         }
 
         public int indexOfMemoryPartAtWork = -1;
@@ -159,6 +167,10 @@ namespace TicTacToe
 
             indexOfMemoryPartAtWork++;
 
+            ///
+            trainNNViaRLMethod();
+            ///
+
             return performAction(action, buttonList);//return false if the action is random//and presses and button on the ui
         }
 
@@ -188,7 +200,7 @@ namespace TicTacToe
         }
 
         Random rand = new Random();
-        private int OutputToAction(double[] output)//gets the actions withe the highest value that is available
+        private int OutputToAction(double[] output)//gets the actions withe the highest value that is available, 
         {
             double highestValue = output[rand.Next(0,9)];
             int indexOfHV = 0;

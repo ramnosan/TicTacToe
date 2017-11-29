@@ -175,10 +175,11 @@ namespace TicTacToe
                 {
                     if (ai.IsHuman == false)
                     {
-                       if (ai.makeDecision(board, buttonList))
+                        if (ai.makeDecision(board, buttonList))
                         {
                             lblRandActionWasUsed.Content = true;
                         }
+                        else lblRandActionWasUsed.Content = false;
                     }
                 }
             }
